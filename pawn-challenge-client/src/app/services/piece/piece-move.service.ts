@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cell, Chess, Position } from '../../models/chess.model';
 import { Player } from '../../models/player.model';
 import { ChessService } from '../chess/chess.service';
+import { GameService } from '../game/game.service';
 
 @Injectable({
   providedIn: 'root',
@@ -142,6 +143,7 @@ export class PieceMoveService {
 
 
   move(chess: Chess, toPosition: Position): boolean {
+
     let fromP = chess.position
     let table = this.chessService.table
     if (table[toPosition.y][toPosition.x].hasDot == true) {
@@ -153,14 +155,11 @@ export class PieceMoveService {
       table[toPosition.y][toPosition.x].hasChess = true
       table[toPosition.y][toPosition.x].chess = chess
 
-      if (chess.name == 'v') {
-        this.chessService.kingB = chess
-      }
-      else if (chess.name == 'V') {
-        this.chessService.kingW = chess
-      }
+
 
       return true
+
+
     } else {
       return false
     }

@@ -314,3 +314,46 @@
     position: absolute;
     width: 100%;
 }
+
+// ------------------------------------
+
+
+.input-group-component .input-box{
+    position: relative;
+    height: 3em;
+    width: 100%;
+}
+
+.input-box .input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 0 35px 0 15px;
+    transition: all 0.2s linear;
+}
+
+input:is(:focus, :valid){
+    border-color: #999;
+}
+
+.input-box :is( i){
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    color: #999;
+    transition: all 0.2s ease;
+}
+
+
+
+.input-box i{
+    right: -1.9em;
+    top: -0.1em;
+}
+
+input:is(:focus, :valid) ~ i{
+    color: #999;
+}

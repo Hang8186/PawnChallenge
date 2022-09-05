@@ -1,6 +1,6 @@
-import { Auth } from './../states/auth.state';
+import { Auth } from '../states/auth.state';
 import { createReducer, on } from '@ngrx/store';
-import * as AuthActions from './../actions/auth.action';
+import * as AuthActions from '../actions/auth.action';
 
 const initializeApp: Auth = {
   isAuthenticated: false,
@@ -30,5 +30,12 @@ export const AuthReducer = createReducer(
   on(AuthActions.logoutFail, (state, action) => ({
     ...state,
     error: action.error,
-  }))
+  })),
+  on(AuthActions.register, (state) => state),
+  on(AuthActions.registerSuccess, (state) => state),
+  on(AuthActions.registerFail, (state, action) => ({
+    ...state,
+    error: action.error,
+  })),
+
 );

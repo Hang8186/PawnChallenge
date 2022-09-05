@@ -1,8 +1,10 @@
 import { AuthService } from './services/auth/auth.service';
 import { Component } from '@angular/core';
-import * as AuthActions from './actions/auth.action';
-import { Auth } from './states/auth.state';
+import * as AuthActions from './RxJs/actions/auth.action';
+import { Auth } from './RxJs/states/auth.state';
 import { Store } from '@ngrx/store';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from './pages/home/login/login.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +16,8 @@ export class AppComponent {
   photourl = '';
   constructor(
     private store: Store<{ auth: Auth }>,
-    private AuthService: AuthService
+    private AuthService: AuthService,
+    public dialog: MatDialog
   ) {
     this.AuthService.getCurrentUser().then(
       (user) =>
@@ -45,6 +48,17 @@ export class AppComponent {
   logOut() {
     this.store.dispatch(AuthActions.logout());
     console.log('logout');
+  }
+
+  openDialogLogin() {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      panelClass: 'dialogLogin', 
+      width: 'auto',
+      height: 'auto',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

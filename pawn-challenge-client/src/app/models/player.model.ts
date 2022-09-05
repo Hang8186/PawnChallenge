@@ -1,7 +1,7 @@
 import { Chess } from "./chess.model"
 import { Timer } from "./timer"
 
-export interface Player{
+export interface Player {
   id: string
   name: string
   elo: number
@@ -10,11 +10,10 @@ export interface Player{
   chessControl: ChessControl,
 }
 
-export interface ChessControl{
-  chessID: string
+export interface ChessControl {
+  chessNameCT: string
   time: Timer
   chessSDie: String[]
-  threatChess: Chess[]
   isCheckmat: boolean
 }
 

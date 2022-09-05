@@ -1,191 +1,194 @@
-<h2 mat-dialog-title>
-    <!-- <img src="../../../../assets/ImageGamemode/ChessBoard.png" alt="Chess board"
-        style="display: block;margin-left: auto;margin-right: auto; width: 70%; margin-bottom:2% ;"> -->
-        <div class="containers"  [ngStyle]="{'background-image': 'url(../../../../../assets/SkinImage/Board/'+ skinService.Board[indexBoard].folderName +'/150.png)'}">
-            <div *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]" class="rows">
-              <div
-                *ngFor="let j of [0, 1, 2, 3, 4, 5, 6, 7]"
-                class="item">
-                <img
-                  *ngIf="table[i][j].hasChess"
-                  src="../../../../../assets/SkinImage/Pieces/{{skinService.Pieces[indexPiece].folderName}}/{{table[i][j].chess.img}}"
-                  draggable="true"
-                  style="
-                    width: calc(44em / 8);
-                    height: calc(44em / 8);
-                    border-radius: 50px;
-                    background-size: cover;
-                    object-fit: cover;
-                    position: relative;
-                  "/>
+<div style="padding: 1.8em 3em 1.5em">
+    <h2 mat-dialog-title>
+        <!-- <img src="../../../../assets/ImageGamemode/ChessBoard.png" alt="Chess board"
+            style="display: block;margin-left: auto;margin-right: auto; width: 70%; margin-bottom:2% ;"> -->
+            <div class="containers"  [ngStyle]="{'background-image': 'url(../../../../../assets/SkinImage/Board/'+ skinService.Board[indexBoard].folderName +'/150.png)'}">
+                <div *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]" class="rows">
+                  <div
+                    *ngFor="let j of [0, 1, 2, 3, 4, 5, 6, 7]"
+                    class="item">
+                    <img
+                      *ngIf="table[i][j].hasChess"
+                      src="../../../../../assets/SkinImage/Pieces/{{skinService.Pieces[indexPiece].folderName}}/{{table[i][j].chess.img}}"
+                      draggable="true"
+                      style="
+                        width: calc(44em / 8);
+                        height: calc(44em / 8);
+                        border-radius: 50px;
+                        background-size: cover;
+                        object-fit: cover;
+                        position: relative;
+                      "/>
 
+                  </div>
+                </div>
               </div>
+    </h2>
+
+    <mat-dialog-content class="mat-typography" >
+        <div >
+            <div class="component">
+                <label class="label">Pieces</label>
+                <select class="select" icon="caret-down" [(ngModel)]="indexPiece">
+                    <option *ngFor="let item of skinService.Pieces; let i = index" [value]="i">
+                        {{item.name}}
+                    </option>
+                </select>
             </div>
-          </div>
-</h2>
 
-<mat-dialog-content class="mat-typography" >
-    <div >
-        <div class="component">
-            <label class="label">Pieces</label>
-            <select class="select" icon="caret-down" [(ngModel)]="indexPiece">
-                <option *ngFor="let item of skinService.Pieces; let i = index" [value]="i">
-                    {{item.name}}
-                </option>
-            </select>
-        </div>
+            <div class="component">
+                <label class="label">Board</label>
+                <select class="select" icon="caret-down" [(ngModel)]="indexBoard">
+                    <option *ngFor="let item of skinService.Board; let i = index" [value]="i">
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
 
-        <div class="component">
-            <label class="label">Board</label>
-            <select class="select" icon="caret-down" [(ngModel)]="indexBoard">
-                <option *ngFor="let item of skinService.Board; let i = index" [value]="i">
-                    {{item.name}}
-                </option>
-            </select>
-        </div>
+            <div class="component">
+                <label class="label">Coordinates</label>
+                <select class="select" icon="caret-down">
+                    <option value="off">
+                        None
+                    </option>
+                    <option value="inside">
+                        Inside
+                    </option>
+                    <option value="outside">
+                        Outside
+                    </option>
+                </select>
+            </div>
 
-        <div class="component">
-            <label class="label">Coordinates</label>
-            <select class="select" icon="caret-down">
-                <option value="off">
-                    None
-                </option>
-                <option value="inside">
-                    Inside
-                </option>
-                <option value="outside">
-                    Outside
-                </option>
-            </select>
-        </div>
+            <div class="component">
+                <label class="label">Piece Notation</label>
+                <select class="select" icon="caret-down">
+                    <option value="text">
+                        Text
+                    </option>
+                    <option value="figurine">
+                        Figurine
+                    </option>
+                </select>
+            </div>
 
-        <div class="component">
-            <label class="label">Piece Notation</label>
-            <select class="select" icon="caret-down">
-                <option value="text">
-                    Text
-                </option>
-                <option value="figurine">
-                    Figurine
-                </option>
-            </select>
-        </div>
+            <div class="component">
+                <label class="label">Animation Type</label>
+                <select class="select" icon="caret-down">
+                    <option value="none">
+                        None
+                    </option>
+                    <option value="slow">
+                        Slow
+                    </option>
+                    <option value="default">
+                        Medium (Default)
+                    </option>
+                    <option value="fast">
+                        Fast
+                    </option>
+                    <option value="natural">
+                        Natural
+                    </option>
+                    <option value="arcade">
+                        Arcade
+                    </option>
+                </select>
+            </div>
 
-        <div class="component">
-            <label class="label">Animation Type</label>
-            <select class="select" icon="caret-down">
-                <option value="none">
-                    None
-                </option>
-                <option value="slow">
-                    Slow
-                </option>
-                <option value="default">
-                    Medium (Default)
-                </option>
-                <option value="fast">
-                    Fast
-                </option>
-                <option value="natural">
-                    Natural
-                </option>
-                <option value="arcade">
-                    Arcade
-                </option>
-            </select>
-        </div>
+            <div class="component">
+                <label class="label">Move Method</label>
+                <select class="select" icon="caret-down">
+                    <option value="drag">
+                        Drag Pieces
+                    </option>
+                    <option value="click">
+                        Click Squares
+                    </option>
+                    <option value="drag-only">
+                        Drag Pieces Only
+                    </option>
+                </select>
+            </div>
 
-        <div class="component">
-            <label class="label">Move Method</label>
-            <select class="select" icon="caret-down">
-                <option value="drag">
-                    Drag Pieces
-                </option>
-                <option value="click">
-                    Click Squares
-                </option>
-                <option value="drag-only">
-                    Drag Pieces Only
-                </option>
-            </select>
-        </div>
+            <div class="component">
+                <label class="label">Highlight Moves</label>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
 
-        <div class="component">
-            <label class="label">Highlight Moves</label>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
+            <div class="component">
+                <label class="label">Play Sounds</label>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
 
-        <div class="component">
-            <label class="label">Play Sounds</label>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
+            <div class="component" >
+                <label class="label">Sound Theme</label>
+                <select class="select" icon="caret-down">
+                    <option value="default">
+                        Default
+                    </option>
+                    <option value="nature">
+                        Nature
+                    </option>
+                    <option value="metal">
+                        Metal
+                    </option>
+                    <option value="marble">
+                        Marble
+                    </option>
+                    <option value="space">
+                        Space
+                    </option>
+                    <option value="beat">
+                        Beat
+                    </option>
+                    <option value="silly">
+                        Silly
+                    </option>
+                    <option value="lolz">
+                        Lolz
+                    </option>
+                    <option value="newspaper">
+                        Newspaper
+                    </option>
+                </select>
+            </div>
 
-        <div class="component" >
-            <label class="label">Sound Theme</label>
-            <select class="select" icon="caret-down">
-                <option value="default">
-                    Default
-                </option>
-                <option value="nature">
-                    Nature
-                </option>
-                <option value="metal">
-                    Metal
-                </option>
-                <option value="marble">
-                    Marble
-                </option>
-                <option value="space">
-                    Space
-                </option>
-                <option value="beat">
-                    Beat
-                </option>
-                <option value="silly">
-                    Silly
-                </option>
-                <option value="lolz">
-                    Lolz
-                </option>
-                <option value="newspaper">
-                    Newspaper
-                </option>
-            </select>
-        </div>
+            <div class="component">
+                <label class="label">Show Legal Moves</label>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
 
-        <div class="component">
-            <label class="label">Show Legal Moves</label>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
+            <div class="component">
+                <label class="label">White Always on Bottom</label>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
 
-        <div class="component">
-            <label class="label">White Always on Bottom</label>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
+            <div class="component">
+                <label class="label">DGT Smart Board</label>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
         </div>
+    </mat-dialog-content>
 
-        <div class="component">
-            <label class="label">DGT Smart Board</label>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
+    <div class="Footer">
+        <button class="buttonCancel" type="button" (click)="closeDialog()"><p style="padding: 13px 0 0 0;font-size: 1.2em;">Cancel</p></button>
+        <button (click)="save()" class="buttonSave"><p style="padding: 13px 0 0 0;font-size: 1.2em;">Save</p></button>
     </div>
-</mat-dialog-content>
 
-<div class="Footer">
-    <button class="buttonCancel" type="button" (click)="closeDialog()"><p style="padding: 13px 0 0 0;font-size: 1.2em;">Cancel</p></button>
-    <button (click)="save()" class="buttonSave"><p style="padding: 13px 0 0 0;font-size: 1.2em;">Save</p></button>
 </div>

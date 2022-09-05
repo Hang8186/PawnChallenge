@@ -1,7 +1,7 @@
-import { PlayerService } from 'src/app/services/player/player.service';
 import { Injectable } from '@angular/core';
 import { Position } from 'src/app/models/chess.model';
 import { Grap } from 'src/app/models/grap.model';
+import { GameService } from '../game/game.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class HistoryMoveService {
 
   grapsHalf:Grap[] = [];
 
-  constructor(private playerSerivce:PlayerService) {
+  constructor(private gameSerivce:GameService) {
    }
   createGrapPosition(){
     //x
@@ -37,10 +37,9 @@ export class HistoryMoveService {
   }
   addGrap(grap : Grap){
     this.graps.push(grap);
-    if(grap.uid == this.playerSerivce.player1.id){
+    if(grap.uid == this.gameSerivce.player1.id){
        this.grapsHalf.push(grap);
     }
-    console.log(this.graps);
   }
   newGrap (){
     let grap : Grap = {

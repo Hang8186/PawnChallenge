@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-dialog-lose',
   templateUrl: './dialog-lose.component.html',
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogLoseComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<DialogLoseComponent>) { }
 
   ngOnInit(): void {
   }
-
+  closeDialog() {
+    this.dialogRef.close();
+  }
 }

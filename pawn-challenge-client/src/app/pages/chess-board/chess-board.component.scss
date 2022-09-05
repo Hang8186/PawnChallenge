@@ -1,11 +1,25 @@
-
 .dot {
   width: 2em;
   height: 2em;
   border-radius: 50px;
-  background-color: rgb(101, 219, 111);
   position: absolute;
 }
+
+.dots{
+  background-color: rgb(101, 219, 111);
+}
+.bans{
+  background-color: rgb(219, 132, 101);
+}
+
+.checkmatImg {
+  position: absolute;
+  svg {
+    width: 8.8em;
+    height: 8.8em;
+  }
+}
+
 .box-start {
   position: absolute;
   z-index: 5;
@@ -81,7 +95,6 @@
   object-fit: cover;
   position: relative;
   margin-top: -1em;
-
 }
 
 .clock {
@@ -176,7 +189,10 @@ tr:nth-child(even) {
   syntax: "<percentage>";
 }
 .chart {
-  background-image: conic-gradient(rgba(64, 46, 46, 0.825) var(--percentage), rgba(255, 255, 255, 0) 0 );
+  background-image: conic-gradient(
+    rgba(64, 46, 46, 0.825) var(--percentage),
+    rgba(255, 255, 255, 0) 0
+  );
   // background: conic-gradient(red var(--percentage), white 0);
   //border-radius: 50%;
   width: 10em;
@@ -201,9 +217,9 @@ tr:nth-child(even) {
   background-color: rgb(170, 105, 105);
 }
 
-.turn1{
+.turn1 {
   background-color: #4343438f;
 }
-.turn2{
+.turn2 {
   background-color: #282828a3;
 }

@@ -49,7 +49,7 @@
             <i class="Icon fi fi-sr-chess-rook-alt fa-fw mr-3"></i>
             {{ hs.graps[i*2].grapFrom }}
             <fa-icon [icon]="['fas', 'caret-right']" class="fa-fw mr-3" style="margin-left: 10px"></fa-icon>
-            {{ hs.graps[i].grapTo }}
+            {{ hs.graps[i*2].grapTo }}
           </td>
 
           <td *ngIf="hs.graps[i*2+1] != undefined" class="fa-fw mr-3">

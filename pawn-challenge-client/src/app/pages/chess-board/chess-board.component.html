@@ -1,7 +1,8 @@
 <div class="content-chess-app">
   <div class="row">
     <div class="col-sm">
-      <div class="containers" [ngStyle]="{'background-image': 'url(../../../assets/SkinImage/Board/'+ skinChess.currenSkinTable +'/150.png)'}">
+      <div class="containers"
+        [ngStyle]="{'background-image': 'url(../../../assets/SkinImage/Board/'+ skinChess.currenSkinTable +'/150.png)'}">
         <div *ngIf="!this.gameService.isGameStart" class="box-start">
           <div class="bt-start" (click)="startGame()">
             <p>START</p>
@@ -9,24 +10,26 @@
         </div>
 
         <div *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]" class="rows">
-          <div
-            *ngFor="let j of [0, 1, 2, 3, 4, 5, 6, 7]"
-            class="item"
-            (drop)="drop($event, table[i][j].position)"
+          <div *ngFor="let j of [0, 1, 2, 3, 4, 5, 6, 7]" class="item" (drop)="drop($event, table[i][j].position)"
             (dragover)="allowDrop($event)"
-            [ngClass]="{'turn1': turn1.y == i && turn1.x == j, 'turn2' : turn2.y == i && turn2.x == j }"
-          >
-            <img
-              *ngIf="table[i][j].hasChess"
-              src="../../../assets/SkinImage/Pieces/{{skinChess.currenSkinChess}}/{{ table[i][j].chess.img }}"
+            [ngClass]="{'turn1': turn1.y == i && turn1.x == j, 'turn2' : turn2.y == i && turn2.x == j }">
 
-              draggable="true"
-              (mousedown)="mousedownImg(table[i][j].chess, $event)"
-              (dragstart)="drag($event, table[i][j].chess)"
-              class="img-chess"
-              id="{{ table[i][j].chess.id }}"
-            />
-            <div *ngIf="table[i][j].hasDot == true" class="dot"></div>
+            <div *ngIf="isCheckmat(table[i][j].chess.name) && table[i][j].chess.name.toLowerCase() == 'v'" class="checkmatImg">
+              <svg width="194" height="194" viewBox="0 0 194 194" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M97 187C146.706 187 187 146.706 187 97C187 47.2944 146.706 7 97 7C47.2944 7 7 47.2944 7 97C7 146.706 47.2944 187 97 187Z"
+                  stroke="#FA1010" stroke-opacity="0.4" stroke-width="13" />
+              </svg>
+            </div>
+
+            <img *ngIf="table[i][j].hasChess"
+              src="../../../assets/SkinImage/Pieces/{{skinChess.currenSkinChess}}/{{ table[i][j].chess.img }}"
+              draggable="true" (mousedown)="mousedownImg(table[i][j].chess, $event)"
+              (dragstart)="drag($event, table[i][j].chess)" class="img-chess" id="{{ table[i][j].chess.id }}"/>
+
+            <div *ngIf="table[i][j].hasDot == true" class="dot"
+            [ngClass]="{'dots': !table[i][j].hasDotban, 'bans' : table[i][j].hasDotban }"
+            ></div>
           </div>
         </div>
       </div>
