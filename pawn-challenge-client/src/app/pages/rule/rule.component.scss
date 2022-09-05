@@ -2,6 +2,21 @@
   padding: 0 10em;
   font-size: calc(100vw * (14 / 2560));
 }
+h1{
+    color: hwb(348 8% 14%);
+    font-family: var(--globalSecondaryFont);
+    font-size: 5 rem;
+    font-size: clamp(2rem,4vw,2.8rem);
+    line-height: 3;
+    word-break: break-word;
+    text-align: 0 auto;
+
+}
+p{
+  
+}
+
+
 
 .row {
   display: flex;

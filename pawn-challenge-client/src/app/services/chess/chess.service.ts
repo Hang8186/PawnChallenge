@@ -16,6 +16,7 @@ export class ChessService {
   constructor(private playerService: PlayerService) {
     this.createChessAccess();
     this.table = this.createBoard()
+    // let strBoard = 'xmthvtmx|cccccccc|        |        |        |        |CCCCCCCC|XMTHVTMX'
     let strBoard = 'xmthvtmx|cccccccc|        |        |        |        |CCCCCCCC|XMTHVTMX'
     // let strBoard = 'v       |        |        |        |        |        |CCCCCCCC|XMTHVTMX'
     this.table = this.setChessToBoard(strBoard, this.table, this.playerService.player1)
