@@ -1,6 +1,10 @@
 .rule-app {
   padding: 0 10em;
   font-size: calc(100vw * (14 / 2560));
+  display: flex;
+  flex-direction: column;
+  background-color: ffff;
+
 }
 h1{
     color: hwb(348 8% 14%);
